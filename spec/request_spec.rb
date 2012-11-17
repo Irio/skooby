@@ -5,7 +5,8 @@ describe Skoob::Request do
 
   describe "#post" do
     it "delegates to a class method" do
-      Skoob::Request.expects(:post).with('/', bla: :foo)
+      Skoob::Request.expects(:post).with('/', bla: :foo).
+        returns(stub('response', :body))
       Skoob::Request.new.post('/', bla: :foo)
     end
   end

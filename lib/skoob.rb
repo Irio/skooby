@@ -1,5 +1,7 @@
 require "skoob/version"
 require 'httparty'
+require 'nokogiri'
+require 'open-uri'
 
 module Skoob
 end

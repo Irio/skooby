@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "minitest"
   gem.add_development_dependency "mocha"
   gem.add_dependency "httparty"
+  gem.add_dependency "nokogiri"
 end
