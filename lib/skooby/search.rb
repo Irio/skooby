@@ -1,6 +1,6 @@
 require 'nokogiri'
 
-module Skoob
+module Skooby
   class Search
     attr_reader :parser
 
@@ -10,7 +10,7 @@ module Skoob
 
     def book(query)
       opts = { body: { data: { Busca: { tipo: "livro", tag: query } } } }
-      page = Skoob::Request.new.post('/livro/lista/', opts)
+      page = Request.new.post('/livro/lista/', opts)
       parse_result(page)
     end
 

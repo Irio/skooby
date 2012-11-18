@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'skoob/version'
+require 'skooby/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "skoob"
-  gem.version       = Skoob::VERSION
+  gem.name          = "skooby"
+  gem.version       = Skooby::VERSION
   gem.authors       = ["Irio Irineu Musskopf Junior"]
   gem.email         = ["irio.musskopf@caixadeideias.com.br"]
-  gem.description   = "Gives you some API like's methods to access Skoob data."
+  gem.description   = "API like interface to provide information about books available at Skoob."
   gem.summary       = "Gives you some API like's methods to access Skoob data."
   gem.homepage      = ""
 

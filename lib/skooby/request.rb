@@ -1,4 +1,4 @@
-module Skoob
+module Skooby
   class Request
     include HTTParty
     base_uri 'skoob.com.br'

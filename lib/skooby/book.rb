@@ -1,4 +1,4 @@
-module Skoob
+module Skooby
   class Book
     attr_reader :id, :title
 
