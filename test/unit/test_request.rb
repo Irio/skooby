@@ -10,4 +10,10 @@ class TestRequest < MiniTest::Unit::TestCase
       returns(stub('response', :body))
     Skooby::Request.new.post('/', bla: :foo)
   end
+
+  def test_get_method_delegates_itself_to_a_class_method
+    Skooby::Request.expects(:get).with('/', bla: :foo).
+      returns(stub('response', :body))
+    Skooby::Request.new.get('/', bla: :foo)
+  end
 end

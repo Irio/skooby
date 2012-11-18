@@ -2,12 +2,6 @@ require 'nokogiri'
 
 module Skooby
   class Search
-    attr_reader :parser
-
-    def initialize(parser = Nokogiri::HTML)
-      @parser = parser
-    end
-
     def book(query)
       opts = { body: { data: { Busca: { tipo: "livro", tag: query } } } }
       page = Request.new.post('/livro/lista/', opts)
@@ -17,9 +11,16 @@ module Skooby
     private
     def parse_result(page_body)
       doc = Nokogiri::HTML(page_body)
-      doc.css('.l15ab').map do |book_node|
-        Book.new(id: /\A\/livro\/(\d+).*\Z/.match(book_node[:href])[1],
-                 title: book_node.content)
+      if doc.css('#livro').empty?
+        doc.css('.box_lista_busca').map do |book_node|
+          title_node = book_node.css('.l15ab')[0]
+          Book.new(id: /\A\/livro\/(\d+).*\Z/.match(title_node[:href])[1],
+                   title: title_node.content,
+                   author: book_node.css('.l11')[0].content)
+        end
+      else
+        Book.new(id: /\A\/livro\/(\d+).*\Z/.match(doc.css('#menubusca li:first a')[0][:href])[1],
+                 title: doc.css('#barra_titulo h1')[0].content)
       end
     end
   end
