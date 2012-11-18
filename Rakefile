@@ -2,7 +2,7 @@ require "bundler/gem_tasks"
 require "rake/testtask"
 
 Rake::TestTask.new do |t|
-  t.pattern = 'spec/*_spec.rb'
+  t.pattern = 'test/*/test_*.rb'
 end
 
 desc "Run tests"
