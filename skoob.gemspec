@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Skoob::VERSION
   gem.authors       = ["Irio Irineu Musskopf Junior"]
   gem.email         = ["irio.musskopf@caixadeideias.com.br"]
-  gem.description   = "Gives you some API like's methods to access Skoob data"
-  gem.summary       = "Gives you some API like's methods to access Skoob data"
+  gem.description   = "Gives you some API like's methods to access Skoob data."
+  gem.summary       = "Gives you some API like's methods to access Skoob data."
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
