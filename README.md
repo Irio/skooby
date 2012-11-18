@@ -13,9 +13,6 @@ Usage
 
 **Searching books**
 ```ruby
-im_feeling_lucky = Skooby::Book.first("Iluminado")
-# => #<Skooby::Book:0x007ff8c34a6370 @id="19733", @title="O Iluminado">
-
 collection = Skooby::Search.new.book("O Iluminado")
 # => [#<Skooby::Book:0x007ff8c31f5248 @id="19733", @title="O Iluminado">,
 # #<Skooby::Book:0x007ff8c32055f8 @id="4257", @title="Os Vagabundos Iluminados">,
