@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["irio.musskopf@caixadeideias.com.br"]
   gem.description   = "API like interface to provide information about books available at Skoob."
   gem.summary       = "Gives you some API like's methods to access Skoob data."
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/Irio/skooby"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
