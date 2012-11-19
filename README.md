@@ -22,7 +22,9 @@ Usage
 book = Skooby::Book.new(id: 108)
 book.url
 # => "http://skoob.com.br/livro/108"
-book.fetch # forces eager load of attributes
+
+# Force eager load of attributes
+book.fetch
 # => #<Skooby::Book:0x007faafa445898
 #  @author="J. K. Rowling",
 #  @id=108,
@@ -46,6 +48,17 @@ collection = Skooby::Search.new.book("O Iluminado")
 #  @author="Helena Jobim",
 #  @id="4447",
 #  @title="Antonio Carlos Jobim">, ...]
+```
+
+**Reviews**
+```ruby
+book = Skooby::Book.new(id: 108)
+book.reviews
+# => [#<Skooby::Review:0x007fcca9c73da0
+#  @author="BiIosack",
+#  @text=
+#   "Harry Potter e a Pedra Filosofal. O Primeiro livro dessa saga incrível. A magia começa a partir dai.\r\nVários 'Potterheads' (fãs de Harry Potter) nasceram depois de conhecer essa obra incrível, escrita por J.K Rowling. Vale a pena conferir essa aventura. Você vai se emocionar, chorar e sorrir com essa historia maravilhosa...",
+#  @title="A Magia começa a partir dai">, ...]
 ```
 
 Contributing

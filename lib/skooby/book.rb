@@ -5,11 +5,12 @@ module Skooby
     attr_reader :id, :title, :author, :rating, :votes
 
     def initialize(params = {})
-      @id     = params[:id]     if params.has_key?(:id)
-      @title  = params[:title]  if params.has_key?(:title)
-      @author = params[:author] if params.has_key?(:author)
-      @rating = params[:rating] if params.has_key?(:rating)
-      @votes  = params[:votes]  if params.has_key?(:votes)
+      @id       = params[:id]       if params.has_key?(:id)
+      @title    = params[:title]    if params.has_key?(:title)
+      @author   = params[:author]   if params.has_key?(:author)
+      @rating   = params[:rating]   if params.has_key?(:rating)
+      @votes    = params[:votes]    if params.has_key?(:votes)
+      @reviews  = params[:reviews]  if params.has_key?(:reviews)
     end
 
     def url
@@ -35,6 +36,10 @@ module Skooby
       @rating = (doc.css('#bt_ranking')[0].content.to_f / 5).round(2)
       @votes  = /(\d+)/.match(doc.css('#bt_estrelas')[0].content)[1]
       self
+    end
+
+    def reviews
+      @reviews ||= Skooby::ReviewsParser.new(@id).last_reviews
     end
 
     private

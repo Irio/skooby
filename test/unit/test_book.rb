@@ -14,6 +14,8 @@ class TestBook < MiniTest::Unit::TestCase
     assert_equal 0.88, subject.rating, 'should allow initialization of rating'
     subject = Skooby::Book.new(votes: 123)
     assert_equal 123, subject.votes, 'should allow initialization of votes'
+    subject = Skooby::Book.new(reviews: [1])
+    assert_equal [1], subject.reviews, 'should allow initialization of reviews'
   end
 
   def test_initialization_should_not_trigger_fetch_method
@@ -98,5 +100,19 @@ class TestBook < MiniTest::Unit::TestCase
     Regexp.any_instance.stubs(:match).returns([])
     Skooby::Request.any_instance.expects(:get).with('/livro/108')
     subject.fetch
+  end
+
+  def test_reviews_method_shouldnt_request_again_for_reviews_already_assigned
+    reviews = stub('collection of reviews')
+    subject = Skooby::Book.new(id: 108, reviews: reviews)
+    Skooby::ReviewsParser.any_instance.expects(:last_reviews).never
+    subject.reviews
+  end
+
+  def test_reviews_method_fetches_reviews
+    expected_reviews = stub('collection of reviews')
+    Skooby::ReviewsParser.stubs(:new).with(108).returns(stub(last_reviews: expected_reviews))
+    subject = Skooby::Book.new(id: 108)
+    assert_equal expected_reviews, subject.reviews
   end
 end
