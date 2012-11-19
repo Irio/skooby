@@ -67,3 +67,11 @@ Contributing
 Feel free to contribute with any patch, even removing extra white spaces.
 
 Open a pull request and make us all happy!
+
+To start with the development:
+```sh
+$ git clone git@github.com:Irio/skooby.git
+$ cd skooby
+$ bundle install
+$ rake test
+```
