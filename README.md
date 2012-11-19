@@ -1,6 +1,8 @@
 Skooby
 =====
 
+[![Build Status](https://secure.travis-ci.org/Irio/skooby.png?branch=master)](https://travis-ci.org/Irio/skooby)
+
 Gives you some API like's methods to access [Skoob](http://skoob.com.br/) data.
 
 Installation
