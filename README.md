@@ -56,11 +56,13 @@ collection = Skooby::Search.new.book("O Iluminado")
 ```ruby
 book = Skooby::Book.new(id: 108)
 book.reviews(page: 1)
-# => [#<Skooby::Review:0x007fcca9c73da0
-#  @author="BiIosack",
-#  @text=
-#   "Harry Potter e a Pedra Filosofal. O Primeiro livro dessa saga incrível. A magia começa a partir dai.\r\nVários 'Potterheads' (fãs de Harry Potter) nasceram depois de conhecer essa obra incrível, escrita por J.K Rowling. Vale a pena conferir essa aventura. Você vai se emocionar, chorar e sorrir com essa historia maravilhosa...",
-#  @title="A Magia começa a partir dai">, ...]
+# => {:page=>1,
+#  :results=>
+#   [#<Skooby::Review:0x007fe45b4f07f8
+#     @author="Rafa",
+#     @text=
+#      "Vi todos os filmes e resolvi ler os livros, acho que J.K tem que ter poderes mágicos para poder escrever um livro magnifico como esse, ela é uma das melhores escritoras atualmente e faz suas história criarem vida.",
+#     @title="Harry Potter e a pedra filosofal ">, ...]}
 ```
 
 Contributing
