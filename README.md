@@ -55,7 +55,7 @@ collection = Skooby::Search.new.book("O Iluminado")
 **Reviews**
 ```ruby
 book = Skooby::Book.new(id: 108)
-book.reviews
+book.reviews(page: 1)
 # => [#<Skooby::Review:0x007fcca9c73da0
 #  @author="BiIosack",
 #  @text=

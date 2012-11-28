@@ -8,8 +8,9 @@ module Skooby
       Request.base_uri + path
     end
 
-    def last_reviews
-      doc = Nokogiri::HTML.parse(Request.new.get(path))
+    def last_reviews(page = 1)
+      page_body = Request.new.get(path(page))
+      doc = Nokogiri::HTML.parse(page_body)
       doc.css('#corpo > div > [id^="resenha"]').map do |review_node|
         Review.new(author: extract_author(review_node),
                    title: extract_title(review_node),

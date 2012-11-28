@@ -5,12 +5,11 @@ module Skooby
     attr_reader :id, :title, :author, :rating, :votes
 
     def initialize(params = {})
-      @id       = params[:id]       if params.has_key?(:id)
-      @title    = params[:title]    if params.has_key?(:title)
-      @author   = params[:author]   if params.has_key?(:author)
-      @rating   = params[:rating]   if params.has_key?(:rating)
-      @votes    = params[:votes]    if params.has_key?(:votes)
-      @reviews  = params[:reviews]  if params.has_key?(:reviews)
+      @id       = params[:id]
+      @title    = params[:title]
+      @author   = params[:author]
+      @rating   = params[:rating]
+      @votes    = params[:votes]
     end
 
     def url
@@ -38,13 +37,15 @@ module Skooby
       self
     end
 
-    def reviews
-      @reviews ||= Skooby::ReviewsParser.new(@id).last_reviews
+    def reviews(opts = {})
+      page = opts[:page] || 1
+      { page: page, results: ReviewsParser.new(@id).last_reviews(page) }
     end
 
     private
     def path
       raise ArgumentError, 'Skooby::Book must have an id' if @id.nil?
+
       "/livro/#@id"
     end
   end

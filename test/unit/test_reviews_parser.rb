@@ -18,6 +18,16 @@ class TestReviewsParser < MiniTest::Unit::TestCase
     result.each { |book| assert book.is_a?(Skooby::Review), 'should be a Skooby::Review' }
   end
 
+  def test_reviews_method_accepts_a_page_parameter_to_deal_with_Skoobs_pagination
+    Skooby::Request.any_instance.expects(:get).with('/livro/resenhas/108/recentes/page:5')
+    subject.last_reviews(5)
+  end
+
+  def test_reviews_method_requests_first_page_by_default
+    Skooby::Request.any_instance.expects(:get).with('/livro/resenhas/108/recentes/page:1')
+    subject.last_reviews
+  end
+
   def test_reviews_method_extracts_a_author_for_each_review
     Skooby::ReviewsParser.any_instance.expects(:extract_author).at_least_once
     VCR.use_cassette('fetch_reviews') do
