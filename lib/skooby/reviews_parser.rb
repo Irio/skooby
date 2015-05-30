@@ -26,15 +26,15 @@ module Skooby
     end
 
     def extract_author(review_node)
-      review_node.css(".corner strong")[0].content
+      review_node.css(".curva2-5 div strong")[0].content
     end
 
     def extract_title(review_node)
-      review_node.css(".corner > div strong")[1].content
+      review_node.css(".curva2-5 div strong")[1].content
     end
 
     def extract_text(review_node)
-      review_node.css(".corner > div")[0].search('text()')[3..-1].text
+      review_node.css(".curva2-5 > div")[0].search('text()')[3..-1].text
     end
   end
 end

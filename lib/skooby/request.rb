@@ -1,7 +1,7 @@
 module Skooby
   class Request
     include HTTParty
-    base_uri 'skoob.com.br'
+    base_uri 'http://www.skoob.com.br'
 
     def post(path, options = {})
       self.class.post(path, options).body

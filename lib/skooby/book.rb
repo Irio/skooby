@@ -30,10 +30,10 @@ module Skooby
 
     def fetch
       doc = Nokogiri::HTML.parse(Request.new.get(path))
-      @title  = doc.css('#barra_titulo h1')[0].content
-      @author = doc.css('.l11')[0].content
-      @rating = (doc.css('#bt_ranking')[0].content.to_f / 5).round(2)
-      @votes  = /(\d+)/.match(doc.css('#bt_estrelas')[0].content)[1]
+      @title  = doc.css('#pg-livro-titulo h1').text
+      @author = doc.css('#pg-livro-menu-principal-container span span a')[0].content
+      @rating = doc.css('#pg-livro-box-rating span').text.to_f
+      @votes  = doc.css('#pg-livro-box-rating-avaliadores-numero').text.split(" ")[0].gsub(/[.]/,'').to_i
       self
     end
 
